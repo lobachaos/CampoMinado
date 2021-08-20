@@ -13,10 +13,15 @@ import campominado.excecao.ExplosaoException;
 public class CampoTeste {
 
 	private Campo campo ;
+	private Tabuleiro tabuleiro;
 	
 	@BeforeEach
 	void iniciarCampo() {
 		campo = new Campo(3, 3);
+	}
+	@BeforeEach
+	void iniciarTabuleiro() {
+		tabuleiro = new Tabuleiro(3, 3, 3);
 	}
 
 	@Test
@@ -76,6 +81,14 @@ public class CampoTeste {
 			campo.minar();
 			assertThrows(ExplosaoException.class, 
 					()-> campo.abrir());
+		}
+		
+		@Test
+		void abrirTabuleiro() {
+			tabuleiro.abrir(3, 3);
+			tabuleiro.marcar(2, 2);
+			
+			
 		}
 		
 
